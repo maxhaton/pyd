@@ -30,6 +30,7 @@ jobs:
         run: pip install nose numpy
       - name: Print dlang
         run: echo $DC
+        run: export COMPILER=${DC}
       - name: Run tests
         env:
           RUNSPEC: runtests
