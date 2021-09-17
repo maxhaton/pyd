@@ -11,9 +11,9 @@ jobs:
         include: 
           - pyversion: 3.8
             DUBCFG: "python38"
-            PYTHON: python3
+            PYTHON: python
           - pyversion: 3.7
-            PYTHON: python3
+            PYTHON: python
             DUBCFG: "python37"
         exclude:
           - { os: macOS-latest, dc: dmd-2.085.0 }
