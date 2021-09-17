@@ -33,4 +33,4 @@ jobs:
           DC: ${{ matrix.dc }}
           RUNSPEC: RUNTESTS
           PYTHON: python
-        run: sudo -E bash runtests.sh
+        run: ./runtests.sh
