@@ -11,9 +11,7 @@ jobs:
         include: 
           - pyversion: 3.8
             DUBCFG: "python38"
-            PYTHON: python
           - pyversion: 3.7
-            PYTHON: python
             DUBCFG: "python37"
         exclude:
           - { os: macOS-latest, dc: dmd-2.085.0 }
@@ -33,4 +31,5 @@ jobs:
         env:
           DC: ${{ matrix.dc }}
           RUNSPEC: RUNTESTS
+          PYTHON: python
         run: sudo -E bash runtests.sh
