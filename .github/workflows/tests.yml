@@ -35,4 +35,4 @@ jobs:
           RUNSPEC: runtests
           PYTHON: python
           DUBCFG: ${{ matrix.dubcfg }}
-        run: ./runtests.sh
+        run: COMPILER=$DC ./runtests.sh
