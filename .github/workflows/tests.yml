@@ -1,0 +1,36 @@
+name: Run all D Tests
+on: [push, pull_request]
+
+jobs:
+  test:
+    name: Dub Tests
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macOS-latest]
+        dc: [dmd-latest, ldc-latest, dmd-2.085.0, ldc-1.17.0]
+        include: 
+          - pyversion: 3.8
+            DUBCFG: "python38"
+          - pyversion: 3.7
+            DUBCFG: "python37"
+        exclude:
+          - { os: macOS-latest, dc: dmd-2.085.0 }
+
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+        with:
+            python-version: ${{ matrix.pyversion }}
+      - name: Install D compiler
+        uses: dlang-community/setup-dlang@v1
+        with:
+          compiler: ${{ matrix.dc }}
+      
+      - name: Run tests
+        env:
+          DC: ${{ matrix.dc }}
+          PYTHON: PYTHON
+          RUNSPEC: RUNTESTS
+          DUBCFG: python37
+        run: sudo ./runtests.sh
