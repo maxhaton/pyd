@@ -29,8 +29,7 @@ jobs:
       - name: Python dependencies
         run: pip install nose numpy
       - name: Print dlang
-        run: echo $DC
-        run: export COMPILER=${DC}
+        run: echo $DC && export COMPILER=${DC}
       - name: Run tests
         env:
           RUNSPEC: runtests
