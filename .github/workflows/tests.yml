@@ -8,11 +8,11 @@ jobs:
       matrix:
         os: [ubuntu-latest, macOS-latest]
         dc: [dmd-latest, ldc-latest, dmd-2.085.0, ldc-1.17.0]
-        include: 
+        include:
           - pyversion: 3.8
-            DUBCFG: "python38"
+            dubcfg: "python38"
           - pyversion: 3.7
-            DUBCFG: "python37"
+            dubcfg: "python37"
         exclude:
           - { os: macOS-latest, dc: dmd-2.085.0 }
 
@@ -31,6 +31,7 @@ jobs:
       - name: Run tests
         env:
           DC: ${{ matrix.dc }}
-          RUNSPEC: RUNTESTS
+          RUNSPEC: runtests
           PYTHON: python
+          DUBCFG: ${{ matrix.dubcfg }}
         run: ./runtests.sh
