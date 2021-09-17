@@ -28,9 +28,10 @@ jobs:
           compiler: ${{ matrix.dc }}
       - name: Python dependencies
         run: pip install nose numpy
+      - name: Print dlang
+        run: echo $DC
       - name: Run tests
         env:
-          DC: ${{ matrix.dc }}
           RUNSPEC: runtests
           PYTHON: python
           DUBCFG: ${{ matrix.dubcfg }}
