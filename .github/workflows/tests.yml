@@ -33,4 +33,4 @@ jobs:
           PYTHON: PYTHON
           RUNSPEC: RUNTESTS
           DUBCFG: python37
-        run: sudo ./runtests.sh
+        run: sudo -E bash runtests.sh
